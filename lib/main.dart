@@ -1,7 +1,9 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, camel_case_types, use_key_in_widget_constructors, duplicate_ignore, annotate_overrides
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import './ThirdView.dart';
 
 void main() {
   runApp(ThorsApp());
@@ -92,12 +94,10 @@ class MainView extends StatelessWidget {
       leading: checkBoxClass(),
       title: Text(
         thelistTitle,
-        style: GoogleFonts.lato(
+        style: GoogleFonts.poppins(
           fontSize: 20,
-          color: Colors.blue,
-          /*TextStyle(fontSize: 20,
+          color: Colors.black,
           fontWeight: FontWeight.bold,
-          color: Colors.black,*/
         ),
       ),
       trailing: IconButton(
@@ -135,6 +135,7 @@ class MainView extends StatelessWidget {
   }*/
 }
 
+// ignore: use_key_in_widget_constructors
 class checkBoxClass extends StatefulWidget {
   @override
   State<checkBoxClass> createState() => checkBoxClassState();
@@ -199,34 +200,6 @@ class SecondView extends StatelessWidget {
           child: Text("Add"),
         )
       ],
-    );
-  }
-}
-
-class ThirdView extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() {
-    return ThirdViewState();
-  }
-}
-
-class ThirdViewState extends State<StatefulWidget> {
-  Widget build(BuildContext context) {
-    int counter = 0;
-    return Scaffold(
-      backgroundColor: Color.fromARGB(255, 255, 218, 173),
-      appBar: AppBar(),
-      body: Center(
-          child: Text(
-        "$counter",
-        style: TextStyle(fontSize: 36),
-      )),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () {
-          counter++;
-        },
-      ),
     );
   }
 }
