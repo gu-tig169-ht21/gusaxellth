@@ -55,10 +55,10 @@ class MainView extends StatelessWidget {
           }));
         },
         tooltip: 'Increment',
-        backgroundColor: Colors.grey[400],
+        backgroundColor: Colors.orange,
         child: const Icon(
           Icons.add,
-          color: Colors.white,
+          color: Colors.black,
           size: 55,
         ),
       ),
