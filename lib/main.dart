@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(ThorsApp());
@@ -51,7 +52,7 @@ class MainView extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return SecondView();
+            return ThirdView();
           }));
         },
         tooltip: 'Increment',
@@ -91,10 +92,12 @@ class MainView extends StatelessWidget {
       leading: checkBoxClass(),
       title: Text(
         thelistTitle,
-        style: TextStyle(
+        style: GoogleFonts.lato(
           fontSize: 20,
+          color: Colors.blue,
+          /*TextStyle(fontSize: 20,
           fontWeight: FontWeight.bold,
-          color: Colors.black,
+          color: Colors.black,*/
         ),
       ),
       trailing: IconButton(
@@ -196,6 +199,34 @@ class SecondView extends StatelessWidget {
           child: Text("Add"),
         )
       ],
+    );
+  }
+}
+
+class ThirdView extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return ThirdViewState();
+  }
+}
+
+class ThirdViewState extends State<StatefulWidget> {
+  Widget build(BuildContext context) {
+    int counter = 0;
+    return Scaffold(
+      backgroundColor: Color.fromARGB(255, 255, 218, 173),
+      appBar: AppBar(),
+      body: Center(
+          child: Text(
+        "$counter",
+        style: TextStyle(fontSize: 36),
+      )),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {
+          counter++;
+        },
+      ),
     );
   }
 }
