@@ -21,14 +21,14 @@ class MainView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 250, 162, 0),
+      backgroundColor: Color.fromARGB(255, 255, 218, 173),
       appBar: AppBar(
         centerTitle: true,
         title: Text(
           'Tig169',
-          style: TextStyle(fontSize: 30, color: Colors.orange),
+          style: TextStyle(fontSize: 30, color: Colors.black),
         ),
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.orange,
         actions: [
           PopupMenuButton(
               itemBuilder: (context) => [
