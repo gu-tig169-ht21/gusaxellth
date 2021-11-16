@@ -24,6 +24,23 @@ class MainView extends StatelessWidget {
       appBar: AppBar(
         title: Text('Tig169'),
         backgroundColor: Colors.grey,
+        actions: [
+          PopupMenuButton(
+              itemBuilder: (context) => [
+                    PopupMenuItem(
+                      child: Text("All"),
+                      value: 1,
+                    ),
+                    PopupMenuItem(
+                      child: Text("Done"),
+                      value: 2,
+                    ),
+                    PopupMenuItem(
+                      child: Text("Undone"),
+                      value: 3,
+                    )
+                  ])
+        ],
       ),
       body: _list(),
       floatingActionButton: FloatingActionButton(
@@ -44,40 +61,38 @@ class MainView extends StatelessWidget {
   }
 
   Widget _list() {
-    return ListView(
-      children: [
-        _item("Plugga"),
-        _divider(),
-        _item("tvatta"),
-        _divider(),
-        _item("Handla"),
-        _divider(),
-        _item("festa"),
-        _doneItem("test"),
-        _divider(),
-        _item("DIska"),
-        _divider(),
-        //_newPageButton(),
-      ],
+    var thelist = [
+      "plugga",
+      "diska",
+      "testar",
+      "testing",
+    ];
+
+    return ListView.builder(
+      itemCount: thelist.length,
+      itemBuilder: (context, index) {
+        return Column(
+          children: [
+            _listItems(thelist[index]),
+            Divider(thickness: 2),
+          ],
+        );
+      },
     );
   }
 
-  Widget _item(strText) {
+  Widget _listItems(thelistTitle) {
     return ListTile(
-      leading: Icon(Icons.check_box_outline_blank),
-      title: Text(strText),
-      trailing: Icon(Icons.clear),
+      leading: checkBoxClass(),
+      title: Text(thelistTitle),
+      trailing: IconButton(
+        icon: Icon(Icons.clear),
+        onPressed: () {},
+      ),
     );
   }
 
-  Widget _divider() {
-    return Divider(
-      height: 15,
-      thickness: 1,
-    );
-  }
-
-  Widget _doneItem(String name) {
+  /* Widget _doneItem(String name) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
@@ -102,14 +117,27 @@ class MainView extends StatelessWidget {
         ),
       ],
     );
-  }
-  /*Widget _newPageButton() {
-    return IconButton(
-      icon: Icon(Icons.add),
-      
-    );
   }*/
+}
 
+class checkBoxClass extends StatefulWidget {
+  @override
+  State<checkBoxClass> createState() => checkBoxClassState();
+}
+
+class checkBoxClassState extends State<checkBoxClass> {
+  bool? _myBool = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Checkbox(
+        value: _myBool,
+        onChanged: (value) {
+          setState(() {
+            _myBool = value;
+          });
+        });
+  }
 }
 
 // SECOND SCREEN
