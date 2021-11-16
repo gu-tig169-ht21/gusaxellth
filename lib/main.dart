@@ -21,9 +21,14 @@ class MainView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 250, 162, 0),
       appBar: AppBar(
-        title: Text('Tig169'),
-        backgroundColor: Colors.grey,
+        centerTitle: true,
+        title: Text(
+          'Tig169',
+          style: TextStyle(fontSize: 30, color: Colors.orange),
+        ),
+        backgroundColor: Colors.black,
         actions: [
           PopupMenuButton(
               itemBuilder: (context) => [
@@ -84,7 +89,14 @@ class MainView extends StatelessWidget {
   Widget _listItems(thelistTitle) {
     return ListTile(
       leading: checkBoxClass(),
-      title: Text(thelistTitle),
+      title: Text(
+        thelistTitle,
+        style: TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+          color: Colors.black,
+        ),
+      ),
       trailing: IconButton(
         icon: Icon(Icons.clear),
         onPressed: () {},
@@ -131,6 +143,7 @@ class checkBoxClassState extends State<checkBoxClass> {
   @override
   Widget build(BuildContext context) {
     return Checkbox(
+        activeColor: Colors.black,
         value: _myBool,
         onChanged: (value) {
           setState(() {
