@@ -3,50 +3,55 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class ThirdView extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() {
-    return ThirdViewState();
+class MyState extends ChangeNotifier {
+  int _counter = 0;
+
+  void increment() {
+    _counter = _counter + 1;
+    notifyListeners();
   }
+
+  int get counter => _counter;
 }
 
-class ThirdViewState extends State<StatefulWidget> {
-  int _counter = 0;
+class ThirdView extends StatelessWidget {
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color.fromARGB(255, 255, 218, 173),
-      appBar: AppBar(),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text("How many times have you pressed the button?"),
-            Text("$_counter", style: TextStyle(fontSize: 36)),
-            CounterIndicator(_counter),
-          ],
+    return ChangeNotifierProvider(
+      create: (context) => MyState(),
+      builder: (context, child) => Scaffold(
+        backgroundColor: Color.fromARGB(255, 255, 218, 173),
+        appBar: AppBar(),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text("How many times have you pressed the button?"),
+              Consumer<MyState>(
+                builder: (context, state, child) =>
+                    Text("${state.counter}", style: TextStyle(fontSize: 36)),
+              ),
+              CounterIndicator(),
+            ],
+          ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () {
-          setState(() {
-            _counter++;
-          });
-        },
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add),
+          onPressed: () {
+            Provider.of<MyState>(context, listen: false).increment();
+          },
+        ),
       ),
     );
   }
 }
 
 class CounterIndicator extends StatelessWidget {
-  final int counter;
-
-  CounterIndicator(this.counter);
-
   Widget build(BuildContext context) {
-    if (counter < 10) {
-      return Text('counter is less than 10');
-    }
-    return Text('Counter is greater or equal than 10');
+    return Consumer<MyState>(builder: (context, state, child) {
+      if (state.counter < 10) {
+        return Text('counter is less than 10');
+      }
+      return Text('Counter is greater or equal than 10');
+    });
   }
 }
