@@ -23,17 +23,23 @@ class MainView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Tig169'),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.arrow_right),
-            onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => SecondView()));
-            },
-          ),
-        ],
+        backgroundColor: Colors.grey,
       ),
       body: _list(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return SecondView();
+          }));
+        },
+        tooltip: 'Increment',
+        backgroundColor: Colors.grey[400],
+        child: const Icon(
+          Icons.add,
+          color: Colors.white,
+          size: 55,
+        ),
+      ),
     );
   }
 
@@ -41,10 +47,17 @@ class MainView extends StatelessWidget {
     return ListView(
       children: [
         _item("Plugga"),
+        _divider(),
         _item("tvatta"),
+        _divider(),
         _item("Handla"),
+        _divider(),
         _item("festa"),
+        _doneItem("test"),
+        _divider(),
         _item("DIska"),
+        _divider(),
+        //_newPageButton(),
       ],
     );
   }
@@ -53,11 +66,53 @@ class MainView extends StatelessWidget {
     return ListTile(
       leading: Icon(Icons.check_box_outline_blank),
       title: Text(strText),
-      trailing: Icon(Icons.highlight_remove),
+      trailing: Icon(Icons.clear),
     );
   }
+
+  Widget _divider() {
+    return Divider(
+      height: 15,
+      thickness: 1,
+    );
+  }
+
+  Widget _doneItem(String name) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: <Widget>[
+        IconButton(
+          onPressed: () {},
+          icon: const Icon(Icons.check_box_outlined),
+        ),
+        Expanded(
+          child: Text(
+            name,
+            style: const TextStyle(
+              fontSize: 26,
+              fontWeight: FontWeight.w400,
+              decoration: TextDecoration.lineThrough,
+            ),
+            textAlign: TextAlign.left,
+          ),
+        ),
+        IconButton(
+          onPressed: () {},
+          icon: const Icon(Icons.clear),
+        ),
+      ],
+    );
+  }
+  /*Widget _newPageButton() {
+    return IconButton(
+      icon: Icon(Icons.add),
+      
+    );
+  }*/
+
 }
 
+// SECOND SCREEN
 class SecondView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
