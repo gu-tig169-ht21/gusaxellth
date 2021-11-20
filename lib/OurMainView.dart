@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, duplicate_ignore, curly_braces_in_flow_control_structures, annotate_overrides, use_key_in_widget_constructors, unnecessary_null_comparison, file_names
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'Assignments.dart';
 import 'AddToList.dart';
@@ -10,7 +11,15 @@ class MainView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('TIG169: Att göra'),
+        centerTitle: true,
+        title: Text(
+          'To do list',
+          style: GoogleFonts.poppins(
+            fontSize: 20,
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       body: Consumer<MyState>(
         builder: (context, state, child) =>
