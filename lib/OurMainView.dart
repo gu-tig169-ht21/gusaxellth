@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'Task_Lists.dart';
-import 'add_new_task_view.dart';
+import 'Assignments.dart';
+import 'AddToList.dart';
 import 'model.dart';
 
 class MainView extends StatelessWidget {
