@@ -42,6 +42,32 @@ class MainView extends StatelessWidget {
           }
         },
       ),
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.orange,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            IconButton(
+              tooltip: 'Sort by all',
+              icon: const Icon(
+                Icons.favorite,
+                size: 30,
+              ),
+              onPressed: () {},
+            ),
+            IconButton(
+              tooltip: 'Sort by finished',
+              icon: const Icon(Icons.check_box),
+              onPressed: () {},
+            ),
+            IconButton(
+              tooltip: 'Sort by unfinished',
+              icon: const Icon(Icons.check_box_outline_blank),
+              onPressed: () {},
+            ),
+          ],
+        ),
+      ),
     );
   }
 
