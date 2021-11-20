@@ -1,8 +1,6 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, no_logic_in_create_state, unnecessary_this, prefer_const_constructors_in_immutables, deprecated_member_use
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, no_logic_in_create_state, unnecessary_this, prefer_const_constructors_in_immutables, deprecated_member_use, unused_import, annotate_overrides, sized_box_for_whitespace, file_names
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:my_first_app/main.dart';
 import 'package:provider/provider.dart';
 import './model.dart';
 
