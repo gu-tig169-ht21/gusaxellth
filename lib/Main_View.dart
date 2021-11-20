@@ -11,20 +11,6 @@ class MainView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('TIG169: Att göra'),
-        actions: [
-          PopupMenuButton(
-              onSelected: (int value) {
-                if (value != null)
-                  Provider.of<MyState>(context, listen: false)
-                      .setFilterBy(value);
-              },
-              itemBuilder: (context) => [
-                    // ignore: prefer_const_constructors
-                    PopupMenuItem(child: Text('Alla uppgifter'), value: 0),
-                    PopupMenuItem(child: Text('Färdiga uppgifter'), value: 1),
-                    PopupMenuItem(child: Text('Ofärdiga uppgifter'), value: 2)
-                  ]),
-        ],
       ),
       body: Consumer<MyState>(
         builder: (context, state, child) =>
@@ -53,17 +39,31 @@ class MainView extends StatelessWidget {
                 Icons.favorite,
                 size: 30,
               ),
-              onPressed: () {},
+              onPressed: () {
+                Provider.of<MyState>(context, listen: false).setFilterBy(0);
+              },
+            ),
+            Container(
+              height: 60,
+              width: 60,
             ),
             IconButton(
               tooltip: 'Sort by finished',
               icon: const Icon(Icons.check_box),
-              onPressed: () {},
+              onPressed: () {
+                Provider.of<MyState>(context, listen: false).setFilterBy(1);
+              },
+            ),
+            Container(
+              height: 60,
+              width: 60,
             ),
             IconButton(
               tooltip: 'Sort by unfinished',
               icon: const Icon(Icons.check_box_outline_blank),
-              onPressed: () {},
+              onPressed: () {
+                Provider.of<MyState>(context, listen: false).setFilterBy(2);
+              },
             ),
           ],
         ),
